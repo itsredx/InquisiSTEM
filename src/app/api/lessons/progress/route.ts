@@ -1,7 +1,7 @@
 // src/app/api/lessons/progress/route.ts
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next'; // Use next-auth/next for server context
-import { authOptions } from '../../auth/[...nextauth]/route'; // Import your AuthOptions
+import { authOptions } from '@/lib/auth'; // Import from the new location (adjust path if needed)
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
