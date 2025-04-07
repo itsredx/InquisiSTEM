@@ -35,6 +35,7 @@ export const authOptions: AuthOptions = { // Add 'export' here
         async authorize(credentials: Record<string, string> | undefined, _req): Promise<PrismaUser | null> {
           const email = credentials?.email;
           const password = credentials?.password;
+          console.log(_req);
           if (!email || !password) { return null; }
           try {
               const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
