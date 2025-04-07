@@ -1,0 +1,139 @@
+/* src/app/AuthForm.module.css */
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh; /* Use less than 100vh if you have headers/footers */
+    padding: 2rem;
+    background-color: #0a0a0a;
+  }
+  
+  .authForm {
+    background-color: #ddd;
+    padding: 2.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(112, 108, 108, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+  
+  .authForm h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+ /* src/app/AuthForm.module.css (or wherever this CSS is located) */
+
+.inputGroup {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #666; /* Changed border for visibility */
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Important */
+  background-color: #fff; /* Ensure background is white or desired color */
+  color: #666; /* <--- ADD THIS LINE: Set your desired text color here (e.g., a dark blue/grey) */
+  /* You could also use standard colors like 'black' or other hex codes like '#333' */
+}
+
+.inputGroup input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Optional: Style the placeholder text color */
+.inputGroup input::placeholder {
+  color: #666; /* Lighter grey for placeholder */
+  opacity: 1; /* Override browser defaults */
+}
+
+/* Optional: Style placeholder text color for older browsers */
+.inputGroup input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #666;
+}
+.inputGroup input::-moz-placeholder { /* Firefox 19+ */
+  color: #666;
+  opacity: 1;
+}
+.inputGroup input:-ms-input-placeholder { /* IE 10+ */
+  color: #666;
+}
+.inputGroup input::-ms-input-placeholder { /* Microsoft Edge */
+  color: #666;
+}
+  
+  .submitButton {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    background-color: #2980b9;
+  }
+  
+  .submitButton:disabled {
+      background-color: #bdc3c7;
+      cursor: wait;
+  }
+  
+  
+  .error {
+    color: #e74c3c;
+    background-color: #fdecea;
+    border: 1px solid #e74c3c;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .success {
+      color: #27ae60;
+      background-color: #eafaf1;
+      border: 1px solid #27ae60;
+      padding: 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+  }
+  
+  
+  .switchForm {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .switchForm a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .switchForm a:hover {
+    text-decoration: underline;
+  }

@@ -1,0 +1,55 @@
+/* src/app/components/SystemCard.module.css */
+
+.card {
+    flex: 1 1 300px; /* Allow wrapping and set a base size */
+    max-width: 350px;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly lighter initial shadow */
+    background-color: #f9f9f9;
+    position: relative; /* Needed for absolute positioning of children like checkmark */
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease; /* Smooth transitions */
+    will-change: transform, box-shadow; /* Hint browser for optimization */
+  }
+  
+  .card:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Increase shadow */
+  }
+  
+  /* Style for completed cards */
+  .completed {
+    background-color: #e0f2e9; /* Light green background */
+    box-shadow: 0 4px 8px rgba(34, 139, 34, 0.15); /* Subtle green shadow */
+  }
+  
+  .completed:hover {
+     /* Keep the lift and shadow increase, but maybe adjust shadow color slightly if desired */
+     box-shadow: 0 8px 16px rgba(34, 139, 34, 0.2);
+  }
+  
+  /* Optional: Keep specific styles for title and description */
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4; /* Improve readability */
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 12px; /* Adjusted position */
+    right: 12px;
+    font-size: 1.6rem; /* Slightly larger */
+    color: #28a745; /* Green color */
+    line-height: 1; /* Ensure it doesn't affect layout */
+  }

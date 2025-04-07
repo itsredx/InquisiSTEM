@@ -1,0 +1,97 @@
+/* src/app/LandingPage.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background-color: #0a0a0a;
+  }
+  
+  .header {
+    margin-bottom: 3rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .main {
+    background-color: #e4d8d8;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loggedInActions h2,
+  .loggedOutActions h2 {
+    font-size: large;
+    font-weight: 500;
+    margin-top: 0;
+    color: #3498db;
+  }
+  
+  .buttonGroup {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+  }
+  
+  .ctaButton,
+  .ctaButtonSecondary,
+  .secondaryButton {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: none;
+  }
+  
+  .ctaButton {
+    background-color: #3498db;
+    color: white;
+  }
+  .ctaButton:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+  
+  .ctaButtonSecondary {
+      background-color: transparent;
+      color: #3498db;
+      border: 1px solid #3498db;
+  }
+  .ctaButtonSecondary:hover {
+      background-color: #eaf5fc;
+      transform: translateY(-2px);
+  }
+  
+  
+  .secondaryButton {
+      margin-top: 1rem;
+      background-color: #e74c3c;
+      color: white;
+  }
+  .secondaryButton:hover {
+      background-color: #c0392b;
+  }
+  
+  
+  .footer {
+    margin-top: 3rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
