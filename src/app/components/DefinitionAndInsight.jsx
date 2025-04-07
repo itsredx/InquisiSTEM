@@ -3,6 +3,9 @@
 
 import React, { useState, useEffect } from 'react'; // Added useEffect
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 export default function DefinitionAndInsight({ definition, onGetInsight, isLoading }) { // Added isLoading prop
   const [insight, setInsight] = useState('');
   const [internalLoading, setInternalLoading] = useState(false); // Manage local loading state
@@ -53,7 +56,15 @@ export default function DefinitionAndInsight({ definition, onGetInsight, isLoadi
         <div style={{ marginTop: '1rem', padding: '1rem', background: '#f0f0f0', borderRadius: '8px' }}> {/* Lighter insight bg */}
           <h3 style={{ color: '#333', marginBottom: '0.5rem' }}>AI Insight</h3> {/* Adjusted styles */}
           {internalLoading && !insight && <p style={{ color: '#777' }}>Loading...</p>}
-          {insight && <p style={{ color: '#333' }}>{insight}</p>}
+          {insight && (
+            // --- Render Insight as Markdown ---
+            <div style={{ color: '#333' }}> {/* Apply base text color to the container */}
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {insight}
+              </ReactMarkdown>
+            </div>
+            // --- End Markdown Rendering ---
+          )}
         </div>
       )}
     </div>
