@@ -16,16 +16,36 @@ import { useLessonContext } from '../context/LessonContext';
 import { quizData } from '../data/quizData';
 import type { QuizQuestion } from '../data/quizData';
 
+
+// --- Data Definitions (Consider moving outside component if static) ---
+const definitions: { [key: string]: string } = {
+    'Human Brain': 'The human brain, the command center of the nervous system, orchestrates thought, memory, emotion, motor skills, vision, breathing, temperature, hunger, and every process that regulates our body. It comprises billions of neurons communicating through synapses.',
+    'Lungs': 'The lungs are the central organs of the respiratory system in humans and many other animals. They are located in the chest cavity and are responsible for the vital process of gas exchange, extracting oxygen from inhaled air and releasing carbon dioxide from the bloodstream into exhaled air.',
+    'Amoeba': 'An amoeba is a type of single-celled organism belonging to the Protozoa group, characterized by its irregular shape and ability to move and capture food using temporary projections called pseudopods. They lack cell walls and are found in diverse environments like water and soil.',
+};
+const systems: System[] = [
+    { title: 'Human Brain', description: 'Delve into the intricate structures of the human brain, including its major lobes (frontal, parietal, temporal, occipital), the cerebellum, brainstem, and the microscopic world of neurons and synapses that enable complex thought and bodily control.' },
+    { title: 'Lungs', description: 'Explore the respiratory pathway from the trachea to the bronchi and bronchioles, culminating in the alveoli where crucial oxygen and carbon dioxide exchange occurs. Understand the mechanics of breathing involving the diaphragm and intercostal muscles.' },
+    { title: 'Amoeba', description: 'Discover the fascinating world of this single-celled protist. Learn about its unique mode of locomotion and feeding using pseudopods (phagocytosis), its simple structure including the nucleus and contractile vacuole, and its role in various ecosystems.' },
+];
+const modelFileMapping: { [key: string]: string } = {
+    'Human Brain': 'human-brain.glb',
+    'Lungs': 'lungs.glb',
+    'Amoeba': 'amoeba.glb',
+};
+// --- End Data Definitions ---
+
 // Define types (keeping them here for encapsulation)
 interface System {
-  title: string;
-  description: string;
-}
+    title: string;
+    description: string;
+  }
+  
+  interface ChatMessage {
+    role: 'user' | 'assistant' | 'system';
+    content: string;
+  }
 
-interface ChatMessage {
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-}
 
 export default function LearnPage() {
     // ========================================================
@@ -49,23 +69,7 @@ export default function LearnPage() {
     const [quizAttempted, setQuizAttempted] = useState(false);
     const [quizPassed, setQuizPassed] = useState<boolean | null>(null);
 
-    // --- Data Definitions (Consider moving outside component if static) ---
-    const definitions: { [key: string]: string } = {
-        'Human Brain': 'The human brain, the command center of the nervous system, orchestrates thought, memory, emotion, motor skills, vision, breathing, temperature, hunger, and every process that regulates our body. It comprises billions of neurons communicating through synapses.',
-        'Lungs': 'The lungs are the central organs of the respiratory system in humans and many other animals. They are located in the chest cavity and are responsible for the vital process of gas exchange, extracting oxygen from inhaled air and releasing carbon dioxide from the bloodstream into exhaled air.',
-        'Amoeba': 'An amoeba is a type of single-celled organism belonging to the Protozoa group, characterized by its irregular shape and ability to move and capture food using temporary projections called pseudopods. They lack cell walls and are found in diverse environments like water and soil.',
-    };
-    const systems: System[] = [
-        { title: 'Human Brain', description: 'Delve into the intricate structures of the human brain, including its major lobes (frontal, parietal, temporal, occipital), the cerebellum, brainstem, and the microscopic world of neurons and synapses that enable complex thought and bodily control.' },
-        { title: 'Lungs', description: 'Explore the respiratory pathway from the trachea to the bronchi and bronchioles, culminating in the alveoli where crucial oxygen and carbon dioxide exchange occurs. Understand the mechanics of breathing involving the diaphragm and intercostal muscles.' },
-        { title: 'Amoeba', description: 'Discover the fascinating world of this single-celled protist. Learn about its unique mode of locomotion and feeding using pseudopods (phagocytosis), its simple structure including the nucleus and contractile vacuole, and its role in various ecosystems.' },
-    ];
-    const modelFileMapping: { [key: string]: string } = {
-        'Human Brain': 'human-brain.glb',
-        'Lungs': 'lungs.glb',
-        'Amoeba': 'amoeba.glb',
-    };
-    // --- End Data Definitions ---
+   
 
 
     // Memos for navigation and derived state

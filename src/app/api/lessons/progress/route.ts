@@ -7,7 +7,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // --- GET Handler: Fetch completed lessons for the logged-in user ---
-export async function GET(req: Request) {
+export async function GET(_req: Request) {
   const session = await getServerSession(authOptions); // Get session server-side
 
   if (!session?.user?.id) {
@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   }
 
   const userId = session.user.id;
-
+  console.log(_req);
   try {
     const completed = await prisma.completedLesson.findMany({
       where: { userId: userId },
@@ -62,15 +62,15 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ message: 'Progress saved successfully' }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Check if the error is due to the unique constraint violation
-    if (error.code === 'P2002') { // Prisma unique constraint violation code
-      // It's okay if they try to complete it again, just return success
-      return NextResponse.json({ message: 'Lesson already marked as complete' }, { status: 200 });
-    }
-    console.error("API POST Progress Error:", error);
-    return NextResponse.json({ message: 'Failed to save progress' }, { status: 500 });
-  } finally {
+    if (typeof error === 'object' && error !== null && 'code' in error && error.code === 'P2002') {
+        return NextResponse.json({ message: 'Lesson already marked as complete' }, { status: 200 });
+     }
+     console.error("API POST Progress Error:", error);
+     // Handle other potential error types if necessary
+     return NextResponse.json({ message: 'Failed to save progress' }, { status: 500 });
+ } finally {
     await prisma.$disconnect();
   }
 }
